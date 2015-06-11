@@ -10,9 +10,10 @@ class OverviewTab extends ReportTab
   name: 'Overview'
   className: 'overview'
   template: templates.overview
-  dependencies: []
+  dependencies: ['Size']
   render: () ->
-    size_sqkm = '??'
+    sizes = @recordSet('Size', 'Size').toArray()[0]
+    size_sqkm = sizes['SIZE_SQKM']
     # setup context object with data and render the template from it
     context =
       sketch: @model.forTemplate()
